@@ -12,7 +12,6 @@ const Page: React.FC = () => {
   const handleSearch = async () => {
     if (city.trim() === '') return;
 
-    try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
       );
@@ -25,9 +24,6 @@ const Page: React.FC = () => {
 
       setWeatherData((prevData) => [...prevData, data]);
       setCity('');
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
-    }
   };
 
   const handleRemoveCard = (index: number) => {
